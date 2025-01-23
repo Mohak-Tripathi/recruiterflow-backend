@@ -78,7 +78,7 @@ app.use("/api/v1/", cards);
 
 const PORT = process.env.PORT;
 
-const server = app.listen(8080, '0.0.0.0', () => {
+const server = app.listen(80, '0.0.0.0', () => {
   console.log(
     `Server is listening at port ${process.env.PORT} in ${process.env.NODE_ENV} mode`
   );
