@@ -2,13 +2,7 @@
 const express = require("express");
 const router = express.Router();
 
-// import {
-//   createCard,
-//   updateCard,
-//   getSingleCard,
-//   deleteCard,
-//   getAllCards
-// } from "../controllers/authController";
+
 
 const {
     createCard,

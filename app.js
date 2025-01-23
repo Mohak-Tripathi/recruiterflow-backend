@@ -15,9 +15,26 @@ Auther: Mohak Tripathi
 
  const express = require("express");
 const app = express();
+const cors = require("cors");
 
 
 const dotenv = require("dotenv");
+
+
+// app.use(cors({
+//   origin: 'http://localhost:3000',
+//   credentials: true
+// }
+// ));
+
+app.use(cors({
+  origin: '*', // Allow all origins (not recommended in production)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
+
+
 
 //setting config environemnt file variable-
 dotenv.config({ path: "./.env" });
@@ -30,8 +47,6 @@ process.on("uncaughtException", err =>{
   process.exit(1);   // in this case we don't need to close the server. Just need to come out (exit) from the process.
 })
 
-// connecting database 
-// connectDataBase()
 
 //Set up Security headers => Use Helmet
 
@@ -50,11 +65,11 @@ app.use(express.json());
 //importing all routes
 const cards = require("./routes/cardRoutes.js");
 
-app.use("/api/v1", cards);
+app.use("/api/v1/", cards);
 
-app.all("*", function(req, res, next){
-  next( new ErrorHandler(`${req.originalUrl} route not found`, 404))
-})
+// app.all("*", function(req, res, next){
+//   next(  route not found`, 404))
+// })
 
 
 
